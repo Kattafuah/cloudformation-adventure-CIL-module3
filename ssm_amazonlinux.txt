@@ -1,7 +1,7 @@
 #Go to cloudshell and run the following:
 #or SSM via Instance connect...
 
-#replace INSTANCE-ID with your VM's 
+#replace INSTANCE-ID with your VM's ID
 aws ssm start-session --target INSTANCE-ID 
 
 #cd into your home directory
