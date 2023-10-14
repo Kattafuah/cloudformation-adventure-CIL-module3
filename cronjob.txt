@@ -1,0 +1,2 @@
+45 05 * * * /usr/bin/python3 /home/ssm-user/mys3backup/cil_amazonlinux_copyscript.py
+

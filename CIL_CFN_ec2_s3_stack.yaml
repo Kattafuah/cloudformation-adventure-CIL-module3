@@ -1,0 +1,31 @@
+# CILC6M3 IaC via Cloudformation
+# Date: Sept 09 2023
+
+
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CFN Stack for creation of EC2 Instance with SSM role and S3 Bucket
+
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-00c6177f250e07ec1  # Amazon Linux 2 AMI ID 
+      IamInstanceProfile: ec2_ssm_role # Role to allow SSM into EC2
+      SecurityGroups:
+        - launch-wizard-1         
+
+  MyS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: maestrobkt1  # Unique bucket name
+
+Outputs:
+  EC2InstancePublicIP:
+    Description: Public IP address of the EC2 instance
+    Value: !GetAtt MyEC2Instance.PublicIp
+
+  S3BucketName:
+    Description: Name of the S3 bucket
+    Value: !Ref MyS3Bucket
+
